@@ -7,6 +7,10 @@ scores3 <- c(85,40,70,9,58,45,26,45,85,7,23,30,22,41,45,28,26,100,95,100,41,45,2
 #Scores3 01FEB17
 scores4 <- c(97,36,26,30,28,11,39,26,22,45,86,30,41,37,9,85,85,39,53,70,95,33,26,11,26,34,20,49,41,94,45,60,41,22,60,30,43,45,36,95,39,26,95,7,28,66,26,7,80,11)
 
+scores <- c(scores1,scores2,scores3,scores4)
+
+ScoreTable <- data.frame('attempts',c(scores1,scores2,scores3,scores4))
+
 plot(scores3,col="blue",pch=19,type = 'b')
 abline(h=mean(scores3),col='blue')
 points(scores2,col="red",pch='2',type = 'p')
@@ -15,8 +19,11 @@ points(scores1,col="green",pch='1',type = 'p')
 abline(h=mean(scores1), col="green")
 points(scores4,col="black",pch='4',type = 'p')
 abline(h=mean(scores1), col="yellow")
-c(max(scores1),max(scores2),max(scores3),max(scores4))
-c(min(scores1),min(scores2),min(scores3),min(scores4))
-c(mean(scores1),mean(scores2),mean(scores3),mean(scores4))
-c(median(scores1),median(scores2),median(scores3),median(scores4))
 
+means <- c(mean(scores1),mean(scores2),mean(scores3),mean(scores4))
+medians <- c(median(scores1),median(scores2),median(scores3),median(scores4))
+sds <- c(sd(scores1),sd(scores2),sd(scores3),sd(scores4))
+
+mean(scores)
+mean(means)
+mean(sds)
