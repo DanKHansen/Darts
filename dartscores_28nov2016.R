@@ -9,7 +9,9 @@ scores4 <- c(97,36,26,30,28,11,39,26,22,45,86,30,41,37,9,85,85,39,53,70,95,33,26
 
 scores <- c(scores1,scores2,scores3,scores4)
 
-ScoreTable <- data.frame('attempts',c(scores1,scores2,scores3,scores4))
+ScoreTable <- data.frame(1:50,scores1,scores2,scores3,scores4)
+colnames(ScoreTable)[1] <- 'Attempts'
+
 
 plot(scores3,col="blue",pch=19,type = 'b')
 abline(h=mean(scores3),col='blue')
