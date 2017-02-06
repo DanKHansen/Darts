@@ -31,7 +31,7 @@ mean(means)
 mean(sds)
 
 plot(scores)
-abline(h=means(scores), col='red')
+abline(h=mean(scores), col='red')
 abline(h=mean(scores), col='red')
 abline(h=mean(scores)+sd(scores), col='green')
 abline(h=mean(scores)-sd(scores), col='green')
