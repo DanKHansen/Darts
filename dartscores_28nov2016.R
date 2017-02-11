@@ -43,3 +43,11 @@ points(scores1,pch = 19)
 points(scores4,pch = 19)
 points(scores5,pch = 19)
 abline(h=mean(scores),col='red')
+
+gg <- ggplot(ScoreTable,aes(x=Attempts))
+gg <- gg + geom_point(aes(y=scores1))
+gg <- gg + geom_point(aes(y=scores2))
+gg <- gg + geom_point(aes(y=scores3))
+gg <- gg + geom_point(aes(y=scores4))
+gg <- gg + geom_point(aes(y=scores5))
+gg
