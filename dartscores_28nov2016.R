@@ -1,3 +1,4 @@
+library(ggplot2)
 #Scores1 28NOV16
 scores1 <- c(26,33,85,60,41,35,7,26,52,45,53,45,26,43,41,55,30,40,41,121,39,43,30,40,44,60,26,3,12,26,41,45,11,81,41,85,45,43,100,34,72,30,43,66,26,28,36,41,66,11)
 #Scores2 16JAN17
@@ -28,13 +29,7 @@ points(scores5,col="orange",pch='5',type = 'p')
 abline(h=mean(scores5), col="yellow")
 
 
-means <- c(mean(scores1),mean(scores2),mean(scores3),mean(scores4),mean(scores5))
-medians <- c(median(scores1),median(scores2),median(scores3),median(scores4),median(scores5))
-sds <- c(sd(scores1),sd(scores2),sd(scores3),sd(scores4),sd(scores5))
-
-mean(scores)
-mean(means)
-mean(sds)
+means <- c(mean(scores1),mean(scores2),mean(scores3),mean(scores4),mean(scores5)) 
 
 
 plot(scores3,pch = 19,xlab = 'Attempts',ylab = 'Scores')
@@ -50,4 +45,9 @@ gg <- gg + geom_point(aes(y=scores2))
 gg <- gg + geom_point(aes(y=scores3))
 gg <- gg + geom_point(aes(y=scores4))
 gg <- gg + geom_point(aes(y=scores5))
+gg <- gg + geom_hline(color='blue', yintercept =  mean(scores), size = 1)
+gg <- gg + geom_hline(color='yellow', yintercept =  140, size = 1)
+gg <- gg + geom_hline(color='orange', yintercept =  160, size = 1)
+gg <- gg + geom_hline(color='red', yintercept =  180, size = 1)
+gg <- gg + labs(y='Scores')
 gg
