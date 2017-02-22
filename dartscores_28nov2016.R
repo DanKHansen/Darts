@@ -13,11 +13,12 @@ scores5 <- c(100,37,45,68,132,41,58,32,41,28,36,95,60,60,36,38,7,92,21,100,26,83
 scores6 <- c(36,30,22,22,100,13,24,28,28,45,100,11,32,26,26,64,26,50,30,11,100,6,45,31,11,41,60,85,43,22,26,77,41,40,41,30,26,21,81,55,85,24,21,30,85,26,60,18,64,60)
 #Scores7 20FEB17
 scores7 <- c(26,64,35,26,47,45,28,24,60,30,40,60,7,60,41,15,30,7,85,65,69,45,34,140,38,81,37,33,73,38,58,60,41,33,41,85,41,80,81,30,85,100,61,30,43,30,40,11,37,22)
+#Scores8 22FEB17
+scores8 <- c(83,33,34,26,52,3,56,36,43,26,70,64,6,81,33,52,3,25,24,30,7,60,40,11,76,11,60,45,91,28,21,26,82,24,85,11,30,11,33,80,43,26,40,26,20,43,37,56,14,11)
 
+scores <- c(scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8)
 
-scores <- c(scores1,scores2,scores3,scores4,scores5,scores6,scores7)
-
-ScoreTable <- data.frame(1:50,scores1,scores2,scores3,scores4,scores5,scores6,scores7)
+ScoreTable <- data.frame(1:50,scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8)
 colnames(ScoreTable)[1] <- 'Attempts'
 
 ScoreTable2 <- as.data.frame(rbind(scores1,scores2,scores3,scores4,scores5,scores6,scores7))
@@ -30,6 +31,7 @@ gg <- gg + geom_point(y=scores4)
 gg <- gg + geom_point(y=scores5)
 gg <- gg + geom_point(y=scores6)
 gg <- gg + geom_point(y=scores7)
+gg <- gg + geom_point(y=scores8)
 gg <- gg + geom_hline(color='blue', yintercept =  mean(scores), size = 1)
 gg <- gg + geom_hline(color='yellow', yintercept =  140, size = 1)
 gg <- gg + geom_hline(color='orange', yintercept =  160, size = 1)
