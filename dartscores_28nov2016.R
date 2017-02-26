@@ -24,7 +24,7 @@ colnames(ScoreTable)[1] <- 'Attempts'
 ScoreTable2 <- as.data.frame(rbind(scores1,scores2,scores3,scores4,scores5,scores6,scores7))
 
 gg <- ggplot(ScoreTable,aes(Attempts))
-gg <- gg + ggtitle(paste('Average=',mean(scores), ', median=', median(scores)))
+gg <- gg + ggtitle(paste('Average=',mean(scores), ', median=', median(scores),sep=''))
 gg <- gg + geom_point(aes(y=scores1))
 gg <- gg + geom_point(y=scores2)
 gg <- gg + geom_point(y=scores3)
