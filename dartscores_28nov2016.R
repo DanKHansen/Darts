@@ -17,13 +17,15 @@ scores7 <- c(26,64,35,26,47,45,28,24,60,30,40,60,7,60,41,15,30,7,85,65,69,45,34,
 scores8 <- c(83,33,34,26,52,3,56,36,43,26,70,64,6,81,33,52,3,25,24,30,7,60,40,11,76,11,60,45,91,28,21,26,82,24,85,11,30,11,33,80,43,26,40,26,20,43,37,56,14,11)
 #Scores9 28FEB17
 scores9 <- c(13,26,45,7,37,17,25,27,45,45,41,19,26,95,45,60,22,26,7,37,30,60,41,85,58,9,85,45,26,87,39,45,60,24,26,58,85,85,90,23,9,40,81,60,15,35,132,60,138,55)
+#Scores10 05MAR17
+scores10 <- c(12,7,24,45,125,33,61,50,9,66,45,42,64,11,26,41,57,74,47,24,41,41,30,50,24,62,20,83,21,28,39,11,37,94,24,26,28,36,26,9,26,22,83,30,79,17,41,45,26,26)
 
-scores <- c(scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8)
+scores <- c(scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8,scores9,scores10)
 
-ScoreTable <- data.frame(1:50,scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8)
+ScoreTable <- data.frame(1:50,scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8,scores9,scores10)
 colnames(ScoreTable)[1] <- 'Attempts'
 
-ScoreTable2 <- as.data.frame(rbind(scores1,scores2,scores3,scores4,scores5,scores6,scores7))
+ScoreTable2 <- as.data.frame(rbind(scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8,scores9,scores10))
 
 gg <- ggplot(ScoreTable,aes(Attempts))
 gg <- gg + ggtitle(paste('Average=',mean(scores), ', median=', median(scores),sep=''))
@@ -35,6 +37,8 @@ gg <- gg + geom_point(y=scores5)
 gg <- gg + geom_point(y=scores6)
 gg <- gg + geom_point(y=scores7)
 gg <- gg + geom_point(y=scores8)
+gg <- gg + geom_point(y=scores9)
+gg <- gg + geom_point(y=scores10)
 gg <- gg + geom_hline(color='blue', yintercept =  mean(scores), size=1)
 gg <- gg + geom_hline(color='lightblue', yintercept =  median(scores), size=1)
 gg <- gg + geom_hline(color='yellow', yintercept =  140, size = 1)
