@@ -48,3 +48,4 @@ gg <- gg + labs(y='Scores')
 gg
 
 hist(scores,180,col = 'green')
+axis(side=1, at=c(10,20,30,40,60,70,80,90,110,120,130,140,160,170,180))
