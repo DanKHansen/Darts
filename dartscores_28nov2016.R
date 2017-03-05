@@ -46,3 +46,5 @@ gg <- gg + geom_hline(color='orange', yintercept =  160, size = 1)
 gg <- gg + geom_hline(color='red', yintercept =  180, size = 1)
 gg <- gg + labs(y='Scores')
 gg
+
+hist(scores,180,col = 'green')
