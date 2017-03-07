@@ -30,7 +30,12 @@ colnames(ScoreTable)[1] <- 'Attempts'
 
 scores <- c()
 for(i in 2:length(ScoreTable[1,])){scores <- append(scores,ScoreTable[,i],length(scores))}
+hist(scores,180,col = 'green')
+axis(side=1, at=c(10,20,30,40,60,70,80,90,110,120,130,140,160,170,180))
+listofmeans <- c()
+for(i in 1:length(ScoreTable[1,])-1){listofmeans[i] <- mean(ScoreTable[,i+1])}
 
+plot(listofmeans, type = 'b', pch = 19)
 gg <- ggplot(ScoreTable,aes(Attempts))
 gg <- gg + ggtitle(paste('Average=',round(mean(scores),2), ', median=', median(scores),sep=''))
 gg <- gg + geom_point(aes(y=ScoreTable[,2]))
@@ -43,10 +48,5 @@ gg <- gg + geom_hline(color='red', yintercept =  180, size = 1)
 gg <- gg + labs(y='Scores')
 gg
 
-hist(scores,180,col = 'green')
-axis(side=1, at=c(10,20,30,40,60,70,80,90,110,120,130,140,160,170,180))
 
-listofmeans <- c()
-for(i in 1:length(ScoreTable[1,])-1){listofmeans[i] <- mean(ScoreTable[,i+1])}
-plot(listofmeans, type = 'b', pch = 19)
 
