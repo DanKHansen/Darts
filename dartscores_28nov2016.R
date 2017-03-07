@@ -21,28 +21,20 @@ scores9 <- c(13,26,45,7,37,17,25,27,45,45,41,19,26,95,45,60,22,26,7,37,30,60,41,
 scores10 <- c(12,7,24,45,125,33,61,50,9,66,45,42,64,11,26,41,57,74,47,24,41,41,30,50,24,62,20,83,21,28,39,11,37,94,24,26,28,36,26,9,26,22,83,30,79,17,41,45,26,26)
 #Scores11 06MAR17
 scores11 <- c(104,26,26,50,15,14,33,39,18,7,35,43,40,29,94,60,125,10,45,7,60,60,22,45,37,39,85,43,38,37,41,43,33,41,38,26,33,88,58,19,89,30,25,31,26,66,132,92,45,66)
+#Scores12 06MAR17
+scores12 <- c(26,40,7,42,58,39,45,41,45,28,45,41,52,75,24,77,43,17,41,26,60,31,93,24,61,7,58,45,83,29,60,36,85,43,43,22,55,43,45,41,37,5,16,35,43,7,85,52,45,33)
 
-
-scores <- c(scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8,scores9,scores10,scores11)
-
-ScoreTable <- data.frame(1:50,scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8,scores9,scores10,scores11)
+ScoreTable <- data.frame(1:50,scores1,scores2,scores3,scores4,scores5,scores6,scores7,
+                         scores8,scores9,scores10,scores11,scores12)
 colnames(ScoreTable)[1] <- 'Attempts'
 
-ScoreTable2 <- as.data.frame(rbind(scores1,scores2,scores3,scores4,scores5,scores6,scores7,scores8,scores9,scores10,scores11))
+scores <- c()
+for(i in 2:length(ScoreTable[1,])){scores <- append(scores,ScoreTable[,i],length(scores))}
 
 gg <- ggplot(ScoreTable,aes(Attempts))
-gg <- gg + ggtitle(paste('Average=',mean(scores), ', median=', median(scores),sep=''))
-gg <- gg + geom_point(aes(y=scores1))
-gg <- gg + geom_point(y=scores2)
-gg <- gg + geom_point(y=scores3)
-gg <- gg + geom_point(y=scores4)
-gg <- gg + geom_point(y=scores5)
-gg <- gg + geom_point(y=scores6)
-gg <- gg + geom_point(y=scores7)
-gg <- gg + geom_point(y=scores8)
-gg <- gg + geom_point(y=scores9)
-gg <- gg + geom_point(y=scores10)
-gg <- gg + geom_point(y=scores11)
+gg <- gg + ggtitle(paste('Average=',round(mean(scores),2), ', median=', median(scores),sep=''))
+gg <- gg + geom_point(aes(y=ScoreTable[,2]))
+for(i in 3:(length(scores)/50)+1){gg <- gg + geom_point(y=ScoreTable[,i])}
 gg <- gg + geom_hline(color='blue', yintercept =  mean(scores), size=1)
 gg <- gg + geom_hline(color='lightblue', yintercept =  median(scores), size=1)
 gg <- gg + geom_hline(color='yellow', yintercept =  140, size = 1)
@@ -53,3 +45,8 @@ gg
 
 hist(scores,180,col = 'green')
 axis(side=1, at=c(10,20,30,40,60,70,80,90,110,120,130,140,160,170,180))
+
+listofmeans <- c()
+for(i in 1:length(ScoreTable[1,])-1){listofmeans[i] <- mean(ScoreTable[,i+1])}
+plot(listofmeans, type = 'b', pch = 19)
+
