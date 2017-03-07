@@ -28,26 +28,30 @@ ScoreTable <- data.frame(1:50,scores1,scores2,scores3,scores4,scores5,scores6,sc
                          scores8,scores9,scores10,scores11,scores12)
 colnames(ScoreTable)[1] <- 'Attempts'
 
-scores <- c()
+scores <- NULL
 for(i in 2:length(ScoreTable[1,])){scores <- append(scores,ScoreTable[,i],length(scores))}
-hist(scores,180,col = 'green')
-axis(side=1, at=c(10,20,30,40,60,70,80,90,110,120,130,140,160,170,180))
 
-listofmeans <- c()
+listofmeans <- NULL
 for(i in 1:length(ScoreTable[1,])-1){listofmeans[i] <- mean(ScoreTable[,i+1])}
-plot(listofmeans, type = 'b', pch = 19)
+
+qplot(x=scores,binwidth=1,fill=I('green'),col=I('black'))+
+  scale_x_continuous(breaks=seq(0,180,10))
+
+
+qplot(x=seq_along(listofmeans),y=listofmeans,geom=c('point','smooth'),xlab='Progress',ylab='Means')
 
 gg <- ggplot(ScoreTable,aes(Attempts))
-gg <- gg + ggtitle(paste('Average=',round(mean(scores),2), ', median=', median(scores),sep=''))
+gg <- gg + ggtitle(paste('Average=',round(mean(scores),2),', median=',median(scores),sep=''))
 gg <- gg + geom_point(aes(y=ScoreTable[,2]))
 for(i in 3:(length(scores)/50)+1){gg <- gg + geom_point(y=ScoreTable[,i])}
-gg <- gg + geom_hline(color='blue', yintercept =  mean(scores), size=1)
-gg <- gg + geom_hline(color='lightblue', yintercept =  median(scores), size=1)
-gg <- gg + geom_hline(color='yellow', yintercept =  140, size = 1)
-gg <- gg + geom_hline(color='orange', yintercept =  160, size = 1)
-gg <- gg + geom_hline(color='red', yintercept =  180, size = 1)
+gg <- gg + geom_hline(color='blue',yintercept=mean(scores),size=1)
+gg <- gg + geom_hline(color='lightblue',yintercept=median(scores),size=1)
+gg <- gg + geom_hline(color='yellow',yintercept=140,size=1)
+gg <- gg + geom_hline(color='orange',yintercept=160,size=1)
+gg <- gg + geom_hline(color='red',yintercept=180,size=1)
 gg <- gg + labs(y='Scores')
 gg
+
 
 
 
