@@ -34,12 +34,12 @@ for(i in 2:length(ScoreTable[1,])){scores <- append(scores,ScoreTable[,i],length
 listofmeans <- NULL
 for(i in 1:length(ScoreTable[1,])-1){listofmeans[i] <- mean(ScoreTable[,i+1])}
 
-qplot(x=scores,binwidth=1,fill=I('green'),col=I('black'))+
+qplot(x=scores,binwidth=1,fill=I('green'),col=I('black'),main = 'Distribution of Scores')+
   scale_x_continuous(breaks=seq(0,180,10))
 
 
 qplot(x=seq_along(listofmeans),y=listofmeans,geom=c('point','smooth'),
-      se=F,xlab='Progress',ylab='Means')+
+      se=F,xlab='Progress',ylab='Means',main = 'Progress in averages')+
   scale_x_continuous(breaks=seq(0,length(listofmeans),1))
 
 gg <- ggplot(ScoreTable,aes(Attempts))
