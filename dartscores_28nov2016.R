@@ -52,7 +52,7 @@ qplot(x=scores,binwidth=1,fill=I('green'),col=I('black'),main = 'Distribution of
 
 #Running averages
 qplot(x=seq_along(listofmeans),y=listofmeans,geom=c('point','smooth'),
-      se=F,xlab='Progress',ylab='Means',main = 'Progress in averages')+
+      xlab='Progress',ylab='Means',main = 'Progress in averages')+
   scale_x_continuous(breaks=seq(0,length(listofmeans),1))
 
 #Overall scores
